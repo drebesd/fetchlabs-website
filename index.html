@@ -11,38 +11,75 @@
             padding: 0;
             text-align: center;
         }
-        header {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #0073e6;
-            color: white;
             padding: 20px;
-            font-size: 24px;
+        }
+        .header button {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
         .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 50px;
         }
-        a {
-            display: block;
-            margin: 10px;
-            text-decoration: none;
-            color: #0073e6;
-            font-size: 20px;
+        .dropdown {
+            display: none;
+            background: white;
+            border: 1px solid #ccc;
+            position: absolute;
+            padding: 10px;
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
         }
     </style>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("aboutDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+        function showForm() {
+            document.getElementById("formContainer").style.display = "block";
+        }
+    </script>
 </head>
 <body>
+    <div class="header">
+        <button onclick="toggleDropdown()">About</button>
+        <button onclick="showForm()">Polling</button>
+    </div>
+
+    <div id="aboutDropdown" class="dropdown">
+        <p onclick="alert('Bark: A network for pet lovers.')">Bark</p>
+        <p onclick="alert('Plark: Political data made simple.')">Plark</p>
+        <p onclick="alert('Rentals: Property insights for smarter decisions.')">Rentals</p>
+    </div>
+
     <div class="container">
         <img src="https://raw.githubusercontent.com/drebesd/fetchlabs-website/refs/heads/main/f2ae21b3-de48-4038-8428-695525c7b9eb.png" alt="Fetch Labs Logo" width="800">
+        
+        <div id="formContainer" class="form-container">
+            <h2>Sign Up for Polling Updates</h2>
+            <form action="#" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
 
-        <h2>Sign Up for Polling Updates</h2>
-        <form action="#" method="post">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" required><br><br>
 
-            <label for="phone">Phone Number:</label><br>
-            <input type="tel" id="phone" name="phone" required><br><br>
-
-            <input type="submit" value="Sign Up">
-    </form>
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
     </div>
 </body>
 </html>
