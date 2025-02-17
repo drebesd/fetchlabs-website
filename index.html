@@ -10,39 +10,37 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            position: relative;
         }
         .container {
-            position: relative;
-            width: 100%;
+            padding: 50px;
+            margin-top: 0;
         }
         .logo {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
+            display: block;
+            width: 800px;
+            margin: 0 auto 20px auto;
         }
-        .buttons {
-            position: absolute;
-            top: 10px;
-            width: 100%;
+        .header {
             display: flex;
-            justify-content: space-between;
-            padding: 10px;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
-        .buttons button {
-            background-color: white;
+        .header button {
+            background-color: #0073e6;
+            color: white;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
         }
         .dropdown {
             display: none;
             background: white;
             border: 1px solid #ccc;
-            position: absolute;
             padding: 10px;
-            left: 10px;
+            margin-top: 10px;
         }
         .form-container {
             display: none;
@@ -62,29 +60,30 @@
 <body>
     <div class="container">
         <img class="logo" src="https://raw.githubusercontent.com/drebesd/fetchlabs-website/refs/heads/main/f2ae21b3-de48-4038-8428-695525c7b9eb.png" alt="Fetch Labs Logo">
-        <div class="buttons">
+        
+        <div class="header">
             <button onclick="toggleDropdown()">About</button>
             <button onclick="showForm()">Polling</button>
         </div>
-    </div>
 
-    <div id="aboutDropdown" class="dropdown">
-        <p onclick="alert('Bark: Dogs are more bark than bite, and Fetch Labs is more research than development.')">Bark</p>
-        <p onclick="alert('Plark: It's not play, but it's not work, it must be plark.')">Plark</p>
-        <p onclick="alert('Rentals: There is no lab space available for rent at this time.')">Rentals</p>
-    </div>
+        <div id="aboutDropdown" class="dropdown">
+            <p onclick="alert('Bark: A network for pet lovers.')">Bark</p>
+            <p onclick="alert('Plark: Political data made simple.')">Plark</p>
+            <p onclick="alert('Rentals: Property insights for smarter decisions.')">Rentals</p>
+        </div>
 
-    <div id="formContainer" class="form-container">
-        <h2>Sign Up for Polling Updates</h2>
-        <form action="#" method="post">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+        <div id="formContainer" class="form-container">
+            <h2>Sign Up for Polling Updates</h2>
+            <form action="#" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
 
-            <label for="phone">Phone Number:</label><br>
-            <input type="tel" id="phone" name="phone" required><br><br>
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" required><br><br>
 
-            <input type="submit" value="Sign Up">
-        </form>
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
     </div>
 </body>
 </html>
