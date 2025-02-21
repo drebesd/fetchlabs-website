@@ -34,17 +34,39 @@
         
         <div class="form-container">
             <h2>Opt-in for Fetch Labs Polling</h2>
-            <form action="https://formspree.io/f/movjyadn" method="post"> 
+            <form action="https://formspree.io/f/movjyadn" method="post" id="optin-form"> 
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name" required><br><br>
 
                 <label for="phone">Phone Number:</label><br>
                 <input type="tel" id="phone" name="phone" required><br><br>
 
+                <!-- ✅ NEW: Required checkbox -->
+                <div>
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">
+                        I agree to receive text messages from Fetch Labs. Standard messaging rates may apply.
+                    </label>
+                </div><br>
+
                 <input type="submit" value="Sign Up">
             </form>
-            <p>By submitting this form, you agree to receive text messages from Fetch Labs. Standard messaging rates may apply.</p>
+
+            <!-- ✅ NEW: Privacy Policy & Terms of Service Links -->
+            <p>By submitting this form, you agree to our 
+                <a href="privacy.html" target="_blank">Privacy Policy</a> and 
+                <a href="terms.html" target="_blank">Terms of Service</a>.
+            </p>
         </div>
     </div>
+
+    <script>
+        document.getElementById("optin-form").addEventListener("submit", function(event) {
+            if (!document.getElementById("consent").checked) {
+                alert("You must agree to receive messages before submitting.");
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
