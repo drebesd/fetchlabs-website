@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Fetch Labs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        h1 {
+            color: #0073e6;
+        }
+        .nav-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #0073e6;
+            font-size: 18px;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Fetch Labs</h1>
+        <p><strong>Fetch Labs LLC</strong> is a research and development startup dedicated to pioneering innovative solutions at the intersection of media, technology, and community engagement. Founded in 2025 by <a href="about-ceo.html">David Drebes</a>, Fetch Labs explores novel ways to leverage contemporary technologies in unique combinations, delivering impactful products and services.</p>
+
+        <h2>Our Focus Areas</h2>
+        <ul>
+            <li><strong>Media & Innovation:</strong> Providing cutting-edge services to media companies, including <a href="polling.html">non-partisan polling</a> and data-driven insights.</li>
+            <li><strong>Automated Information Collection:</strong> Developing tools that curate and personalize information for consumers.</li>
+            <li><strong>Digital Entertainment:</strong> Creating and distributing fresh, engaging digital entertainment products.</li>
+            <li><strong>Community & Non-Profits:</strong> Researching hyper-local information-sharing and community-building strategies for nonprofit organizations.</li>
+        </ul>
+
+        <p>Fetch Labs is incorporated in <strong>Missouri</strong>, and its official filing with the Secretary of State can be viewed <a href="https://bsd.sos.mo.gov/Common/CorrespondenceItemViewHandler.ashx?IsTIFF=true&filedDocumentid=137994041&version=2" target="_blank">here</a>.</p>
+
+        <p>Our main laboratory is based in <strong>St. Louis, Missouri</strong>, with a satellite laboratory at <strong>Pine Tree Lake in Potosi, Missouri</strong>.</p>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about-ceo.html">About the CEO</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</body>
+</html>
