@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parents Weekend Bingo</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    h1 { margin-bottom: 10px; }
+    #bingo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; max-width: 500px; margin: auto; }
+    .square {
+      border: 2px solid #333;
+      padding: 20px;
+      background: #f9f9f9;
+      cursor: pointer;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 14px;
+    }
+    .marked { background: #4CAF50; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Parents Weekend Bingo</h1>
+  <div id="bingo"></div>
+  <button id="bingoBtn">Bingo!</button>
+
+  <script>
+    const phrases = [
+      "Back in my day…","College was cheaper","What’s your major?","So, any boyfriends/girlfriends?",
+      "You should join a fraternity","I had a 4.0 GPA","Do you cook in the dorms?","Parking is impossible",
+      "We didn’t have phones then","Party school!","I paid off my loans quick","Your generation is soft",
+      "When I was your age…","How’s the food?","Tuition keeps going up","Can you get a job with that major?",
+      "You need more sleep","What’s your GPA?","Laundry is tough","Your roommate is nice?",
+      "Internships are key","Professors are easy/hard","My major was tougher","What’s next after college?","Go team!"
+    ];
+
+    const board = document.getElementById('bingo');
+    const saved = JSON.parse(localStorage.getItem('bingoState') || '{}');
+
+    // randomize phrases
+    const shuffled = phrases.sort(() => Math.random() - 0.5).slice(0, 25);
+
+    shuffled.forEach((text, i) => {
+      const square = document.createElement('div');
+      square.className = 'square';
+      square.textContent = text;
+      if (saved[text]) square.classList.add('marked');
+      square.onclick = () => {
+        square.classList.toggle('marked');
+        saved[text] = square.classList.contains('marked');
+        localStorage.setItem('bingoState', JSON.stringify(saved));
+      };
+      board.appendChild(square);
+    });
+
+    document.getElementById('bingoBtn').onclick = () =>
+      alert("🎉 Bingo! Nice job!");
+  </script>
+</body>
+</html>
