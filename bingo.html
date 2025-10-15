@@ -7,13 +7,13 @@
   <style>
     body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
     h1 { margin-bottom: 10px; }
-    #bingo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; max-width: 500px; margin: auto; }
+    #bingo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; max-width: 450px; margin: auto; }
     .square {
       border: 2px solid #333;
-      padding: 20px;
+      padding: 25px;
       background: #f9f9f9;
       cursor: pointer;
-      min-height: 60px;
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -30,43 +30,41 @@
 
   <script>
     const phrases = [
-      "Back in my day…","_____ was cheaper then","What’s your major?","So, any boyfriends/girlfriends?", "Random weather small talk",
-      "You know any of the basketball players?","You thinking about graduate school?","Do you miss the dorms?","Parking/traffic was tough",
-      "We didn’t have smartphones then","Wait, you're not 21, are you?","You ever see [random friend from freshman year]?","Your generation is ____",
-      "When I was your age…","Who's the best cook?","What your hardest class?","Can you get a job with that major?", "Can you believe you're juniors?",
-      "You getting enough sleep?","What’s your GPA?","I wish I was back in college","Got a light?", "You miss home?", "Need me to buy you some beer?",
-      "Who cleans the bathroom?","This place is clean/dirty.", "This street is loud/quiet.","What's your favorite class","What’s next after college?","Go X!"
+      "Back in my day…","_____ is so expensive now","So, any boyfriends/girlfriends?","Random weather small talk","You know any of the basketball players?","You thinking about graduate school?","Do you miss the dorms?","Parking/traffic was tough",
+      "We didn’t have smartphones then","You ever see [random friend from freshman year]?","Who's the best cook?","What’s your hardest class?","Can you get a job with that major?","Can you believe you're juniors?",
+      "You getting enough sleep?","I wish I was back in college","You miss home?","Who cleans the bathroom?","What's your favorite class","What’s next after college?"
     ];
 
     const board = document.getElementById('bingo');
     const saved = JSON.parse(localStorage.getItem('bingoState') || '{}');
 
-    // randomize phrases
-    const shuffled = phrases.sort(() => Math.random() - 0.5).slice(0, 25);
+    // pick 15 phrases + 1 free space = 16 total
+    const shuffled = phrases.sort(() => Math.random() - 0.5).slice(0, 15);
+    const freeIndex = Math.floor(Math.random() * 16); // random position 0–15
 
-  shuffled.forEach((text, i) => {
-  const square = document.createElement('div');
-  square.className = 'square';
+    for (let i = 0; i < 16; i++) {
+      const square = document.createElement('div');
+      square.className = 'square';
+      
+      if (i === freeIndex) {
+        square.textContent = 'FREE SPACE GO X!';
+        square.classList.add('marked');
+        saved['FREE SPACE GO X!'] = true;
+      } else {
+        const text = shuffled.pop();
+        square.textContent = text;
+        if (saved[text]) square.classList.add('marked');
+        square.onclick = () => {
+          square.classList.toggle('marked');
+          saved[text] = square.classList.contains('marked');
+          localStorage.setItem('bingoState', JSON.stringify(saved));
+        };
+      }
 
-  // Make the center (index 12) the free space
-  if (i === 12) {
-    square.textContent = 'FREE SPACE';
-    square.classList.add('marked');
-    saved['FREE SPACE'] = true;
-  } else {
-    square.textContent = text;
-    if (saved[text]) square.classList.add('marked');
-    square.onclick = () => {
-      square.classList.toggle('marked');
-      saved[text] = square.classList.contains('marked');
-      localStorage.setItem('bingoState', JSON.stringify(saved));
-    };
-  }
+      board.appendChild(square);
+    }
 
-  board.appendChild(square);
-});
-localStorage.setItem('bingoState', JSON.stringify(saved));
-
+    localStorage.setItem('bingoState', JSON.stringify(saved));
 
     document.getElementById('bingoBtn').onclick = () =>
       alert("🎉 Bingo! Nice job!");
